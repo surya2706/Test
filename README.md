@@ -27,6 +27,6 @@ project
 
 - The `Dockerfile` file contains the code to build the docker image.
 - The python source course resides inside the `main` folder.
-- `api_helper.py` file contains the `ApiHelper` python class which fetches the response from the url.
-- `conf.py` file is the configuration file that contains the static variables such as `api_key` and `url`. (`api_key` is obtained by signing into the `https://https://macaddress.io/`)
-- `main.py` file is the one which is executed on running the docker container.
+- `api_helper.py` file inside main directory contains the `ApiHelper` python class which fetches the response from the url.
+- `conf.py` file inside main directory is the configuration file that contains the static variables such as `api_key` and `url`. (`api_key` is obtained by signing into the `https://https://macaddress.io/`)
+- `main.py` file inside main directory is the one which is executed on running the docker container.
