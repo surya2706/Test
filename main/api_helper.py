@@ -23,7 +23,7 @@ class ApiHelper:
                 if response.status != 200:
                     return
                 for line in response:
-                    line_in_dict = json.loads(line)
-                    return line_in_dict
+                    response_in_dict = json.loads(line)
+                    return response_in_dict
         except:
             return
