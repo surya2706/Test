@@ -1,24 +1,25 @@
 __author__ = "Karthik Surya"
 
 import sys
+from flask import Flask, jsonify, request
 from api_helper import ApiHelper
 from conf import url, header
 
+app = Flask(__name__)
 
-def main(mac_address):
-    print("Entered mac address is {}".format(mac_address))
+
+@app.route("/")
+def hello():
+    mac_address = request.args.get('mac_address')
     api_helper = ApiHelper(url, header)
     response = api_helper.get_mac_addr_details(mac_address)
 
     if not response:
-        print('Sorry, there is an Error. Check the mac address.')
-        return      # End of function
+        return jsonify({'success': False, 'error': 'Please check the mac address'})
 
     company_name = response.get('vendorDetails').get('companyName')
-    print('Company name for mac address {} is : {}'.format(
-        mac_address, company_name))
+    return jsonify({'companyName': company_name, 'success': True})
 
 
 if __name__ == "__main__":
-    print("Executing python cisco-test")
-    main(sys.argv[1])
+    app.run(host='0.0.0.0', port=5000)
