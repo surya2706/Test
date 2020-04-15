@@ -45,6 +45,8 @@ project
 │   │   conf.py
 │   │   main.py
 |   |   requirements.txt
+|   └─── service
+|   |   |   mac_service.py
 ```
 
 # Note
@@ -54,6 +56,7 @@ project
 - `api_helper.py` inside main directory contains the `ApiHelper` python class which fetches the response from the url.
 - `conf.py` inside main directory is the configuration file that contains the static variables such as `api_key`. (`api_key` is obtained by signing into the `https://https://macaddress.io/`)
 - `requirements.txt` lists down all the required packages to install on the environment before running the project.
+- `mac_service.py` inside `service` directory fetches the response by invoking the `ApiHelper` class's `get` method with `url` and `header` as parameters.
 - `main.py` inside main directory is the one which is executed on running the docker container.
 
 ##### Security
