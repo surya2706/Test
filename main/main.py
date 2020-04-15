@@ -8,9 +8,8 @@ from conf import url, header
 app = Flask(__name__)
 
 
-@app.route("/")
-def hello():
-    mac_address = request.args.get('mac_address')
+@app.route("/mac_address/<mac_address>")
+def hello(mac_address):
     api_helper = ApiHelper(url, header)
     response = api_helper.get_mac_addr_details(mac_address)
 
