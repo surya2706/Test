@@ -44,6 +44,7 @@ project
 │   |   api_helper.py
 │   │   conf.py
 │   │   main.py
+|   |   requirements.txt
 ```
 
 # Note
@@ -52,6 +53,7 @@ project
 - The python source code resides inside the `main` folder.
 - `api_helper.py` inside main directory contains the `ApiHelper` python class which fetches the response from the url.
 - `conf.py` inside main directory is the configuration file that contains the static variables such as `api_key`. (`api_key` is obtained by signing into the `https://https://macaddress.io/`)
+- `requirements.txt` lists down all the required packages to install on the environment before running the project.
 - `main.py` inside main directory is the one which is executed on running the docker container.
 
 ##### Security
