@@ -1,4 +1,4 @@
-# Test-Script
+# Python Sample Code
 
 This is a python project that provides the REST API to fetch the Company Name on providing the Mac Address as argument.
 
