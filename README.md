@@ -1,13 +1,36 @@
 # Test-Script
 
-This is a python script that fetches the Company Name on providing the Mac Address as command line argument.
+This is a python project that provides the REST API to fetch the Company Name on providing the Mac Address as argument.
 
 - Clone the Project using `git clone https://github.com/surya2706/Test.git`
 - Open the terminal and `cd` into the cloned directory.
-- Run the command `docker build -t cisco-test:0.1 .` to build the docker image. (Make sure that Docker is installed in your machine)
-- Now run the docker container by entering the command with appropriarte mac address`docker run cisco-test:0.1 <mac_address>`. (`mac_address` for which the Company Name is to be fetched)
-- The python script will execute and return the `Company name` if the entered mac address is correct.
-- If the entered mac address is incorrect, then you will get a response `Sorry, there is an Error. Check the mac address.`
+- Run the command `docker build -t cisco-test .` to build the docker image. (Make sure that Docker is installed in your machine)
+- Now run the docker container by entering the command with appropriarte mac address`docker run -p 5000:5000 cisco-test`.
+- The python project will execute and run on `http://0.0.0.0:5000/`.
+
+#### REST API implementation
+
+##### Endpoint: `/mac_address/<mac_address>`
+
+##### Method: `GET`
+
+##### Success Response:
+
+```
+{
+    "success": true,
+    "companyName": "Apple, Inc"
+}
+```
+
+##### Error Response:
+
+```
+{
+    "success": false,
+    "error": "Please check the mac address"
+}
+```
 
 The folder structure is
 
@@ -25,8 +48,12 @@ project
 
 # Note
 
-- The `Dockerfile` file contains the code to build the docker image.
-- The python source course resides inside the `main` folder.
-- `api_helper.py` file inside main directory contains the `ApiHelper` python class which fetches the response from the url.
-- `conf.py` file inside main directory is the configuration file that contains the static variables such as `api_key` and `url`. (`api_key` is obtained by signing into the `https://https://macaddress.io/`)
-- `main.py` file inside main directory is the one which is executed on running the docker container.
+- The `Dockerfile` contains the code to build the docker image.
+- The python source code resides inside the `main` folder.
+- `api_helper.py` inside main directory contains the `ApiHelper` python class which fetches the response from the url.
+- `conf.py` inside main directory is the configuration file that contains the static variables such as `api_key`. (`api_key` is obtained by signing into the `https://https://macaddress.io/`)
+- `main.py` inside main directory is the one which is executed on running the docker container.
+
+##### Security
+
+- `JWT Token Based Authentication` can be used to secure this application in order to provide access to resources only for Authorized users. The authorized users will be verified and provided with an `AccessToken` on their login and this token will be passed in the `HEADER` on each subsequent requests. The token will be verified on each and every requests for their validity and then the resources are provided as response. The Token will be destroyed on logout which will then restrict the access to resources. The token can also have a expire time which enables the server to verify the token's lifetime and send response accordingly.
