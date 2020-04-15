@@ -14,8 +14,6 @@ def main():
 
 @app.route("/mac_address/<mac_address>")
 def fetch_mac_details(mac_address):
-    if not mac_address:
-        return jsonify({"success": False, "error": "Please enter mac address"})
     mac_service = MacService(url, header)
     response = mac_service.get_company_name(mac_address)
     return jsonify(response)
