@@ -5,7 +5,7 @@ This is a python project that provides the REST API to fetch the Company Name on
 - Clone the Project using `git clone https://github.com/surya2706/Test.git`
 - Open the terminal and `cd` into the cloned directory.
 - Run the command `docker build -t cisco-test .` to build the docker image. (Make sure that Docker is installed in your machine)
-- Now run the docker container by entering the command with appropriarte mac address`docker run -p 5000:5000 cisco-test`.
+- Now run the docker container by entering the command `docker run -p 5000:5000 cisco-test`.
 - The python project will execute and run on `http://0.0.0.0:5000/`.
 
 #### REST API implementation
